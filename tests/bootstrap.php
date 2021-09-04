@@ -9,4 +9,4 @@ function onError($severity, $errMessage, $errFile = null, $errLine = null, $errC
 }
 
 
-set_error_handler(onError);
+set_error_handler("onError");
