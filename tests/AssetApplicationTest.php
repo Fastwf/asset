@@ -6,6 +6,7 @@ namespace Fastwf\Tests;
 use PHPUnit\Framework\TestCase;
 
 use Fastwf\Asset\AssetApplication;
+use Fastwf\Asset\Handler\AssetRequestHandler;
 
 
 class AssetApplicationTest extends TestCase
@@ -21,6 +22,18 @@ class AssetApplicationTest extends TestCase
         $route = new AssetApplication(__DIR__ . '/../resources');
 
         $this->assertNotNull($route->match("index.html", "GET"));
+    }
+
+    /**
+     * @covers Fastwf\Asset\AssetApplication
+     * @covers Fastwf\Asset\Handler\AssetRequestHandler
+     * @covers Fastwf\Asset\Utils\Mime
+     */
+    public function testCorrectHandler()
+    {
+        $route = new AssetApplication(__DIR__ . '/../resources');
+
+        $this->assertTrue($route->getHandler(null) instanceof AssetRequestHandler);
     }
 
 }

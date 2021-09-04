@@ -43,6 +43,10 @@ class MimeTest extends TestCase
      */
     public function testGetMimeTypeCommonUsingCache()
     {
+        // Load from original file or from memory according to the execution order
+        $this->assertEquals('text/css', Mime::getMimeType('/app/static/style.CSS'));
+
+        // Clear memory to force to reload from file -> the cache file
         Mime::clear();
 
         $this->assertEquals('text/css', Mime::getMimeType('/app/static/style.CSS'));
