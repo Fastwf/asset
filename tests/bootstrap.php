@@ -10,3 +10,11 @@ function onError($severity, $errMessage, $errFile = null, $errLine = null, $errC
 
 
 set_error_handler("onError");
+
+
+if (!function_exists('apache_request_headers')) {
+    // Create fake apache_request_headers method
+    function apache_request_headers() {
+        return [];
+    }
+}

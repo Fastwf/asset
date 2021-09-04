@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "28771494899a8fd9161744da16d0cdcc",
+    "content-hash": "3e7bee257f4a526f5ccd93603e385e82",
     "packages": [
         {
             "name": "fastwf/core",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Fastwf/core.git",
-                "reference": "5bb0f92fcad46d4ec6790e8f03fa39793c6d69b6"
+                "reference": "ae839723a3984b8291daba478f8700d0966bf41d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Fastwf/core/zipball/5bb0f92fcad46d4ec6790e8f03fa39793c6d69b6",
-                "reference": "5bb0f92fcad46d4ec6790e8f03fa39793c6d69b6",
+                "url": "https://api.github.com/repos/Fastwf/core/zipball/ae839723a3984b8291daba478f8700d0966bf41d",
+                "reference": "ae839723a3984b8291daba478f8700d0966bf41d",
                 "shasum": ""
             },
             "require-dev": {
@@ -49,7 +49,7 @@
                 "source": "https://github.com/Fastwf/core/tree/main",
                 "issues": "https://github.com/Fastwf/core/issues"
             },
-            "time": "2021-08-11T19:21:08+00:00"
+            "time": "2021-09-04T18:32:50+00:00"
         }
     ],
     "packages-dev": [
