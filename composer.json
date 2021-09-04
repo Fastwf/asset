@@ -1,0 +1,34 @@
+{
+    "name": "fastwf/asset",
+    "description": "Fast web framework library to serve static files",
+    "type": "library",
+    "license": "MIT License",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Fastwf/core"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Fastwf\\Asset\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fastwf\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "fastwf/core": "dev-main"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
+    "authors": [
+        {
+            "name": "David BELBEZE",
+            "email": "david.belbeze@gmail.com"
+        }
+    ]
+}
