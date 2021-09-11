@@ -29,6 +29,18 @@ class AssetApplicationTest extends TestCase
      * @covers Fastwf\Asset\Handler\AssetRequestHandler
      * @covers Fastwf\Asset\Utils\Mime
      */
+    public function testMatchPathWithPrefixUrl()
+    {
+        $route = new AssetApplication(__DIR__ . '/../resources', 'public');
+
+        $this->assertNotNull($route->match("public/index.html", "GET"));
+    }
+
+    /**
+     * @covers Fastwf\Asset\AssetApplication
+     * @covers Fastwf\Asset\Handler\AssetRequestHandler
+     * @covers Fastwf\Asset\Utils\Mime
+     */
     public function testCorrectHandler()
     {
         $route = new AssetApplication(__DIR__ . '/../resources');

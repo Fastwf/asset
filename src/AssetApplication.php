@@ -3,6 +3,8 @@
 namespace Fastwf\Asset;
 
 use Fastwf\Core\Router\Route;
+use Fastwf\Core\Utils\StringUtil;
+
 use Fastwf\Asset\Handler\AssetRequestHandler;
 
 
@@ -14,17 +16,32 @@ class AssetApplication extends Route {
     /**
      * Create an instance of the static application.
      *
-     * @param string $directory_path the path to the directory in the file system.
+     * @param string $directoryPath the path to the directory in the file system.
+     * @param string $prefixUrl the prefix of the route.
+     * @param string|null $name the name of the route
      */
-    public function __construct($directory_path, $name = null) {
+    public function __construct($directoryPath, $prefixUrl = "", $name = null) {
         parent::__construct([
-            "path" => "{path:filePath}",
+            "path" => self::getSafePrefixUrl($prefixUrl) . "{path:filePath}",
             "methods" => ["GET"],
             "name" => $name,
-            "handler" => function ($context) use ($directory_path) {
-                return new AssetRequestHandler($context, $directory_path);
+            "handler" => function ($context) use ($directoryPath) {
+                return new AssetRequestHandler($context, $directoryPath);
             },
         ]);
+    }
+
+    /**
+     * Generate a safe prefix url for asset route.
+     *
+     * @param string $prefix the prefix used for the asset route.
+     * @return string the url ready to concat with path parameter.
+     */
+    private static function getSafePrefixUrl($prefix)
+    {
+        return $prefix === "" || StringUtil::endsWith($prefix, "/")
+            ? $prefix
+            : "$prefix/";
     }
 
 }

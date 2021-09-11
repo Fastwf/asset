@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Fastwf/core.git",
-                "reference": "729ec9160231e22af35b6ca7254bbb36e6ee928a"
+                "reference": "ec6a7b33dce6d40744ff5bcfc257a62e864b90b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Fastwf/core/zipball/729ec9160231e22af35b6ca7254bbb36e6ee928a",
-                "reference": "729ec9160231e22af35b6ca7254bbb36e6ee928a",
+                "url": "https://api.github.com/repos/Fastwf/core/zipball/ec6a7b33dce6d40744ff5bcfc257a62e864b90b2",
+                "reference": "ec6a7b33dce6d40744ff5bcfc257a62e864b90b2",
                 "shasum": ""
             },
             "require-dev": {
@@ -49,7 +49,7 @@
                 "source": "https://github.com/Fastwf/core/tree/main",
                 "issues": "https://github.com/Fastwf/core/issues"
             },
-            "time": "2021-09-11T18:43:17+00:00"
+            "time": "2021-09-11T21:38:09+00:00"
         }
     ],
     "packages-dev": [
