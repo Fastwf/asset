@@ -48,6 +48,35 @@ class AssetRequestHandlerTest extends TestCase
      * @covers Fastwf\Asset\Handler\AssetRequestHandler
      * @covers Fastwf\Asset\Utils\Mime
      */
+    public function testHandleWithRouteName()
+    {
+        $handler = new AssetRequestHandler(null, __DIR__ . '/../../resources', "assets");
+
+        $request = new HttpRequest("/index.html", "GET");
+        $request->parameters = ["assets/filePath" => "index.html"];
+
+        $response = $handler->handle($request);
+
+        // Test headers
+        $this->assertEquals(200, $response->status);
+        $this->assertEquals('text/html', $response->headers->get('Content-Type'));
+
+
+        // Test response content
+        $httpOutput = new FileHttpOutput(self::OUT_FILE);
+
+        $response->send($httpOutput);
+
+        $this->assertEquals(
+            \file_get_contents(self::OUT_FILE),
+            \file_get_contents(__DIR__ . '/../../resources/index.html')
+        );
+    }
+
+    /**
+     * @covers Fastwf\Asset\Handler\AssetRequestHandler
+     * @covers Fastwf\Asset\Utils\Mime
+     */
     public function testNotFound()
     {
         $this->expectException(NotFoundException::class);

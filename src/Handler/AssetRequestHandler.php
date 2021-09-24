@@ -2,13 +2,13 @@
 
 namespace Fastwf\Asset\Handler;
 
+use Fastwf\Core\Components\RequestHandler;
 use Fastwf\Core\Http\NotFoundException;
 use Fastwf\Core\Http\Frame\HttpResponse;
-use Fastwf\Core\Components\RequestHandler;
 use Fastwf\Core\Http\Frame\HttpStreamResponse;
+use Fastwf\Core\Router\BaseRoute;
 
 use Fastwf\Asset\Utils\Mime;
-
 
 /**
  * This handler try to send a static file when exists in the filesystem else throw NotFoundException.
@@ -24,10 +24,20 @@ class AssetRequestHandler extends RequestHandler {
      */
     protected $path;
 
-    public function __construct($context, $path) {
+    /**
+     * The name of the application.
+     * 
+     * It's required to extract the parameter when the name is not null.
+     *
+     * @var string
+     */
+    protected $routeName;
+
+    public function __construct($context, $path, $routeName = null) {
         parent::__construct($context);
 
         $this->path = $path;
+        $this->routeName = $routeName;
     }
 
     /**
@@ -35,14 +45,22 @@ class AssetRequestHandler extends RequestHandler {
      */
     public function handle($request)
     {
-        $fullPath = \realpath(\join(DIRECTORY_SEPARATOR, [$this->path, $request->parameters["filePath"]]));
+        $fullPath = \realpath(
+            \join(
+                DIRECTORY_SEPARATOR,
+                [
+                    $this->path,
+                    $request->parameters[BaseRoute::getParameterName($this->routeName, "filePath")]
+                ]
+            )
+        );
         
         if ($fullPath && \file_exists($fullPath)) {
             return new HttpStreamResponse(
                 200,
                 [
                     "Content-Type" => Mime::getMimeType($fullPath),
-                    "Content-Length" => \filesize($fullPath)
+                    "Content-Length" => \filesize($fullPath),
                 ],
                 $this->sendFile($fullPath)
             );

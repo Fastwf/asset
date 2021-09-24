@@ -26,7 +26,7 @@ class AssetApplication extends Route {
             "methods" => ["GET"],
             "name" => $name,
             "handler" => function ($context) use ($directoryPath) {
-                return new AssetRequestHandler($context, $directoryPath);
+                return new AssetRequestHandler($context, $directoryPath, $this->getName());
             },
         ]);
     }
