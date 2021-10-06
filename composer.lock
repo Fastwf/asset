@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Fastwf/core.git",
-                "reference": "414ab2f78b4e3d54b824aef30b7993149d3565cc"
+                "reference": "708d62adb4df2c6a3ef51a6b4ec15646028df907"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Fastwf/core/zipball/414ab2f78b4e3d54b824aef30b7993149d3565cc",
-                "reference": "414ab2f78b4e3d54b824aef30b7993149d3565cc",
+                "url": "https://api.github.com/repos/Fastwf/core/zipball/708d62adb4df2c6a3ef51a6b4ec15646028df907",
+                "reference": "708d62adb4df2c6a3ef51a6b4ec15646028df907",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
                 "source": "https://github.com/Fastwf/core/tree/main",
                 "issues": "https://github.com/Fastwf/core/issues"
             },
-            "time": "2021-09-24T17:51:40+00:00"
+            "time": "2021-10-06T17:49:40+00:00"
         },
         {
             "name": "psr/log",

@@ -7,6 +7,7 @@ use Fastwf\Core\Http\NotFoundException;
 use Fastwf\Core\Http\Frame\HttpResponse;
 use Fastwf\Core\Http\Frame\HttpStreamResponse;
 use Fastwf\Core\Router\BaseRoute;
+use Fastwf\Core\Utils\StringUtil;
 
 use Fastwf\Asset\Utils\Mime;
 
@@ -36,7 +37,7 @@ class AssetRequestHandler extends RequestHandler {
     public function __construct($context, $path, $routeName = null) {
         parent::__construct($context);
 
-        $this->path = $path;
+        $this->path = \realpath($path);
         $this->routeName = $routeName;
     }
 
@@ -55,7 +56,7 @@ class AssetRequestHandler extends RequestHandler {
             )
         );
         
-        if ($fullPath && \file_exists($fullPath)) {
+        if ($fullPath && $this->canSendPath($fullPath)) {
             return new HttpStreamResponse(
                 200,
                 [
@@ -65,8 +66,23 @@ class AssetRequestHandler extends RequestHandler {
                 $this->sendFile($fullPath)
             );
         } else {
-            throw new NotFoundException("No such file '{$request->path}'");
+            throw new NotFoundException("No such file '{$request->path}'\n");
         }
+    }
+
+    /**
+     * Verify that is possible to send the files corresponding to the path.
+     *
+     * @return boolean
+     */
+    private function canSendPath($path)
+    {
+        // Check that the path is a readable file and is in the exposed folder
+        //  -> prevent security access with url containing %2E%2E => '..'
+        return \file_exists($path)
+            && \is_file($path)
+            && \is_readable($path)
+            && StringUtil::startsWith($path, $this->path);
     }
 
     /**

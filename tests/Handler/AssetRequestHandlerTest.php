@@ -89,6 +89,22 @@ class AssetRequestHandlerTest extends TestCase
         $response = $handler->handle($request);
     }
 
+    /**
+     * @covers Fastwf\Asset\Handler\AssetRequestHandler
+     * @covers Fastwf\Asset\Utils\Mime
+     */
+    public function testNotFoundWhenUnauthorized()
+    {
+        $this->expectException(NotFoundException::class);
+
+        $handler = new AssetRequestHandler(null, __DIR__ . '/../../resources');
+
+        $request = new HttpRequest("/index.xhtml", "GET");
+        $request->parameters = ["filePath" => "../composer.json"];
+
+        $response = $handler->handle($request);
+    }
+
     protected function tearDown(): void
     {
         if (\file_exists(self::OUT_FILE))
