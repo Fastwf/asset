@@ -2,9 +2,9 @@
 
 namespace Fastwf\Tests\Handler;
 
-use Fastwf\Core\Engine\Output\IHttpOutput;
+use Fastwf\Api\Engine\Output\HttpOutputInterface;
 
-class FileHttpOutput implements IHttpOutput {
+class FileHttpOutput implements HttpOutputInterface {
 
     public $path;
     public $status = 0;

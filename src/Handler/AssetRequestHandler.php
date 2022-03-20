@@ -2,14 +2,12 @@
 
 namespace Fastwf\Asset\Handler;
 
-use Fastwf\Core\Components\RequestHandler;
-use Fastwf\Core\Http\NotFoundException;
-use Fastwf\Core\Http\Frame\HttpResponse;
-use Fastwf\Core\Http\Frame\HttpStreamResponse;
-use Fastwf\Core\Router\BaseRoute;
-use Fastwf\Core\Utils\StringUtil;
-
 use Fastwf\Asset\Utils\Mime;
+use Fastwf\Api\Utils\StringUtil;
+use Fastwf\Core\Router\BaseRoute;
+use Fastwf\Core\Http\NotFoundException;
+use Fastwf\Core\Components\RequestHandler;
+use Fastwf\Core\Http\Frame\HttpStreamResponse;
 
 /**
  * This handler try to send a static file when exists in the filesystem else throw NotFoundException.

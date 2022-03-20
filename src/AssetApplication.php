@@ -3,7 +3,7 @@
 namespace Fastwf\Asset;
 
 use Fastwf\Core\Router\Route;
-use Fastwf\Core\Utils\StringUtil;
+use Fastwf\Api\Utils\StringUtil;
 
 use Fastwf\Asset\Handler\AssetRequestHandler;
 
