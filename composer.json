@@ -3,10 +3,15 @@
     "description": "Fast web framework library to serve static files",
     "type": "library",
     "license": "MIT License",
+    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/Fastwf/core"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Fastwf/api"
         }
     ],
     "autoload": {
@@ -20,7 +25,7 @@
         }
     },
     "require": {
-        "fastwf/core": "dev-main"
+        "fastwf/core": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^9"
